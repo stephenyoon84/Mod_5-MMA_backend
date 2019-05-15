@@ -9,7 +9,7 @@ class CreateMembers < ActiveRecord::Migration[5.1]
       t.date :register_date
       t.boolean :active
       t.text :info
-      t.boolean :welcome_mail
+      t.boolean :welcome_mail, :default => false
 
       t.timestamps
     end

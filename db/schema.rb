@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20190514145121) do
     t.date "register_date"
     t.boolean "active"
     t.text "info"
-    t.boolean "welcome_mail"
+    t.boolean "welcome_mail", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
