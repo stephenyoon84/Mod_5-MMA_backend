@@ -1,7 +1,6 @@
 class GroupSerializer < ActiveModel::Serializer
   attributes :id, :name, :year
   has_many :allmembers
-  # has_many :users
   has_one :leader
 
   def leader
