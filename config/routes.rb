@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users
       resources :members
       resources :groups
+      get '/current_user', to: 'auth#get_current_user'
       post '/login', to: 'auth#create'
       post '/signup', to: 'users#create'
     end

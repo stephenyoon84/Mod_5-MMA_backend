@@ -18,14 +18,14 @@ class ApplicationController < ActionController::API
 
   def header_token
     if auth_header.present?
-      autho_header.split(' ')[1]
+      auth_header.split(' ')[1]
     end
   end
 
   def current_user
     if header_token.present?
       payload = decode_token(header_token)
-      user = Usesr.find(payload['user_id'])
+      user = User.find(payload['user_id'])
       user
     else
       false

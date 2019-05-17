@@ -13,4 +13,17 @@ class Api::V1::AuthController < ApplicationController
     end
     render json: json
   end
+
+  def get_current_user
+    if current_user
+      json = {success: true,
+              user: {id: current_user.id,
+                     name: current_user.name,
+                     email: current_user.email,
+                     user_type: current_user.user_type}}
+    else
+      json = {}
+    end
+    render json: json
+  end
 end
