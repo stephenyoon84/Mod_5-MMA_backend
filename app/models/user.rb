@@ -3,4 +3,6 @@ class User < ApplicationRecord
   has_many :groups
   has_many :group_members, as: :member
   has_many :group_members, through: :groups
+
+  validates :email, uniqueness: true
 end
