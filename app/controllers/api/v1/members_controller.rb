@@ -1,6 +1,6 @@
 class Api::V1::MembersController < ApplicationController
   def index
-    members = Member.all
+    members = Member.all.order(register_date: :desc)
     render json: members
   end
 
