@@ -16,7 +16,6 @@ class Api::V1::UsersController < ApplicationController
                                                   email: user.email,
                                                   user_type: user.user_type}}
     else
-      byebug
       json = {errors: "something went wrong.", success: false}
     end
     render json: json
