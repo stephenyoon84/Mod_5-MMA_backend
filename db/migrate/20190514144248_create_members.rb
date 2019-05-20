@@ -7,7 +7,7 @@ class CreateMembers < ActiveRecord::Migration[5.1]
       t.string :gender
       t.date :dob
       t.date :register_date
-      t.boolean :active
+      t.boolean :active, :default => true
       t.text :info
       t.boolean :welcome_mail, :default => false
 
