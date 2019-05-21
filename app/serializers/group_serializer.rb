@@ -6,7 +6,9 @@ class GroupSerializer < ActiveModel::Serializer
   def leader
     {leader_id: self.object.user.id,
      leader_name: self.object.user.name,
-     leader_email: self.object.user.email}
+     leader_email: self.object.user.email,
+     leader_gender: self.object.user.gender,
+     leader_dob: self.object.user.dob}
   end
 
   def allmembers
