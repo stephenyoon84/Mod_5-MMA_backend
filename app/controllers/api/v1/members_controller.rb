@@ -20,7 +20,10 @@ class Api::V1::MembersController < ApplicationController
 
   def update
     target = Member.find_by(id: params[:id])
+    tGroup = Group.find_by(name: params[:member][:group])
     if target.update(member_params)
+      # byebug
+      tGroup.members << target if !target.groups.include?(tGroup)
       json = {success: true}
     else
       json = {success: false}
