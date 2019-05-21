@@ -19,7 +19,13 @@ class Api::V1::MembersController < ApplicationController
   end
 
   def update
-
+    target = Member.find_by(id: params[:id])
+    if target.update(member_params)
+      json = {success: true}
+    else
+      json = {success: false}
+    end
+    render json: json
   end
 
   def destroy
@@ -29,7 +35,7 @@ class Api::V1::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :email, :phone_number, :gender, :dob, :active, :info, :welcome_mail)
+    params.require(:member).permit(:id, :name, :email, :phone_number, :gender, :dob, :active, :info, :welcome_mail)
     # params.require(:member).permit(:name, :email, :phone_number, :gender, :dob, :register_date, :active, :info, :welcome_mail)
   end
 end
