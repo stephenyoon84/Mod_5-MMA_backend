@@ -1,17 +1,6 @@
 class Api::V1::MembersController < ApplicationController
   def index
-    # members = Group.all.collect{|g| g.all_members}
-    # leaders = Group.all.collect{|g| g.user}
-    # members << leaders
-    # members.flatten!.uniq!.sort_by!{|m| m.register_date}.reverse!
-    # users = User.where.not(user_type: 'admin')
-    # members = Member.all.order(register_date: :desc)
     members = Member.all.order('register_date DESC, id DESC')
-    # m = []
-    # users.each{|u| m.push(u)}
-    # members.each{|me| m.push(me)}
-    # m.sort_by!{|m| m.register_date}.reverse!
-    # byebug
     render json: members
   end
 
@@ -33,7 +22,6 @@ class Api::V1::MembersController < ApplicationController
     target = Member.find_by(id: params[:id])
     tGroup = Group.find_by(name: params[:member][:group])
     if target.update(member_params)
-      # byebug
       if tGroup
         if !target.groups.empty?
           Group.find(target.groups.find_by(year: Date.today.year).id).members.delete(target)
