@@ -13,10 +13,10 @@ GroupMember.destroy_all
 
 admin = User.create!(name: "admin", email: "aa@aa.com", phone_number: 1111111111, gender: "M", dob: Date.new(1984, 3, 31), register_date: Date.new(2014, 2, 20), active: true, info: "admin", user_type: "admin", password: "aa")
 
-u1 = User.create!(name: "bb", email: "bb@bb.com", phone_number: 1231231234, gender: "F", dob: Date.new(1988, 5, 2), register_date: Date.new(2017, 7, 25), active: true, info: "group leader", user_type: "team_leader", password: "bb")
-u2 = User.create!(name: "cc", email: "cc@cc.com", phone_number: 2342342345, gender: "F", dob: Date.new(1990, 4, 8), register_date: Date.new(2015, 5, 30), active: true, info: "team leader", user_type: "group_leader", password: "cc")
+u1 = User.create!(name: "bb", email: "bb@bb.com", phone_number: 1231231234, gender: "F", dob: Date.new(1988, 5, 2), register_date: Date.new(2017, 7, 25), active: true, info: "team leader", user_type: "team_leader", password: "bb")
+u2 = User.create!(name: "cc", email: "cc@cc.com", phone_number: 2342342345, gender: "F", dob: Date.new(1990, 4, 8), register_date: Date.new(2015, 5, 30), active: true, info: "group leader", user_type: "group_leader", password: "cc")
 u3 = User.create!(name: "dd", email: "dd@dd.com", phone_number: 3453453456, gender: "F", dob: Date.new(1992, 8, 16), register_date: Date.new(2016, 7, 2), active: true, info: "team", password: "dd")
-u4 = User.create!(name: "ee", email: "ee@ee.com", phone_number: 4564564567, gender: "M", dob: Date.new(1975, 12, 25), register_date: Date.new(2008, 3, 31), active: true, info: "team leader", user_type: "group_leader", password: "ee")
+u4 = User.create!(name: "ee", email: "ee@ee.com", phone_number: 4564564567, gender: "M", dob: Date.new(1975, 12, 25), register_date: Date.new(2008, 3, 31), active: true, info: "group leader", user_type: "group_leader", password: "ee")
 
 g1 = Group.create!(name: "AAA", year: 2018, user: u2, info: "2018 new group")
 g2 = Group.create!(name: "BBB", year: 2018, user: u4, info: "2018 new group")
