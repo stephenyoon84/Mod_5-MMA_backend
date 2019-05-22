@@ -5,7 +5,8 @@ class Api::V1::MembersController < ApplicationController
     # members << leaders
     # members.flatten!.uniq!.sort_by!{|m| m.register_date}.reverse!
     # users = User.where.not(user_type: 'admin')
-    members = Member.all.order(register_date: :desc)
+    # members = Member.all.order(register_date: :desc)
+    members = Member.all.order('register_date DESC, id DESC')
     # m = []
     # users.each{|u| m.push(u)}
     # members.each{|me| m.push(me)}
