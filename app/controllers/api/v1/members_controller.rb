@@ -33,7 +33,10 @@ class Api::V1::MembersController < ApplicationController
     tGroup = Group.find_by(name: params[:member][:group])
     if target.update(member_params)
       # byebug
-      tGroup.members << target if !target.groups.include?(tGroup)
+      if !target.groups.empty?
+        Group.find(target.groups[0].id).members.delete(target)
+      end
+      tGroup.members << target
       json = {success: true}
     else
       json = {success: false}
