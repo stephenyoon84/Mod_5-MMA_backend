@@ -33,10 +33,12 @@ class Api::V1::MembersController < ApplicationController
     tGroup = Group.find_by(name: params[:member][:group])
     if target.update(member_params)
       # byebug
-      if !target.groups.empty?
-        Group.find(target.groups.find_by(year: Date.today.year).id).members.delete(target)
+      if tGroup
+        if !target.groups.empty?
+          Group.find(target.groups.find_by(year: Date.today.year).id).members.delete(target)
+        end
+        tGroup.members << target
       end
-      tGroup.members << target
       json = {success: true}
     else
       json = {success: false}
