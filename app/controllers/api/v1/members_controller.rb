@@ -32,7 +32,7 @@ class Api::V1::MembersController < ApplicationController
     target = Member.find_by(id: params[:id])
     tGroup = Group.find_by(name: params[:member][:group])
     if target.update(member_params)
-      byebug
+      # byebug
       if !target.groups.empty?
         Group.find(target.groups.find_by(year: Date.today.year).id).members.delete(target)
       end
