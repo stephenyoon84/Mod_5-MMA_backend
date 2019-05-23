@@ -48,7 +48,7 @@ g2.members << m8
 g2.members << m9
 g2.members << m10
 
-g3.users << admin
+# g3.users << admin
 g3.users << u3
 g4.users << u1
 g3.members << m2
