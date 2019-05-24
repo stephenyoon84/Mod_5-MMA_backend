@@ -11,10 +11,12 @@ class Api::V1::UsersController < ApplicationController
     user.dob = bdate
     if user.save
       token = encode_token({user_id: user.id})
-      json = {token: token, success: true, user: {id: user.id,
-                                                  name: user.name,
-                                                  email: user.email,
-                                                  user_type: user.user_type}}
+      json = {token: token, success: true,
+              user: {id: user.id,
+                     name: user.name,
+                     email: user.email,
+                     phone_number: user.phone_number,
+                     user_type: user.user_type}}
     else
       json = {errors: "something went wrong.", success: false}
     end
