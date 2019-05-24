@@ -20,6 +20,7 @@ class Api::V1::AuthController < ApplicationController
               user: {id: current_user.id,
                      name: current_user.name,
                      email: current_user.email,
+                     phone_number: current_user.phone_number,
                      user_type: current_user.user_type}}
     else
       json = {}
