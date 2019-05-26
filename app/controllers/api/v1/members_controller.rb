@@ -21,6 +21,9 @@ class Api::V1::MembersController < ApplicationController
   def update
     target = Member.find_by(id: params[:id])
     tGroup = Group.find_by(name: params[:member][:group])
+    if member_params[:dob] == ""
+      member_params[:dob] = target.dob
+    end
     if target.update(member_params)
       if tGroup
         if !target.groups.empty?
