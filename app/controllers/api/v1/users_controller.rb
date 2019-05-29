@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.new(user_params)
     # dobA = user_params[:dob].split('/')
-    byebug
+    # byebug
     # bdate = Date.new(dobA[2].to_i, dobA[0].to_i, dobA[1].to_i)
     # user.dob = bdate
     if user.save
