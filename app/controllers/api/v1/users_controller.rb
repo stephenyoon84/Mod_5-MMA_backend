@@ -6,9 +6,10 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    dobA = user_params[:dob].split('/')
-    bdate = Date.new(dobA[2].to_i, dobA[0].to_i, dobA[1].to_i)
-    user.dob = bdate
+    # dobA = user_params[:dob].split('/')
+    byebug
+    # bdate = Date.new(dobA[2].to_i, dobA[0].to_i, dobA[1].to_i)
+    # user.dob = bdate
     if user.save
       token = encode_token({user_id: user.id})
       json = {token: token, success: true,
