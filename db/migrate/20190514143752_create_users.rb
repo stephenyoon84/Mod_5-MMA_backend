@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.bigint :phone_number
       t.string :gender
       t.date :dob
-      t.date :register_date
+      t.date :register_date, :default => Date.today
       t.boolean :active
       t.text :info
       t.string :user_type, :default => "new_user"
