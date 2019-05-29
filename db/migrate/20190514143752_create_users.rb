@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.date :register_date
       t.boolean :active
       t.text :info
-      t.string :user_type, :default => "team"
+      t.string :user_type, :default => "new_user"
       t.string :password_digest
 
       t.timestamps
