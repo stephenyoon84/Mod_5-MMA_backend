@@ -6,10 +6,6 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    # dobA = user_params[:dob].split('/')
-    # byebug
-    # bdate = Date.new(dobA[2].to_i, dobA[0].to_i, dobA[1].to_i)
-    # user.dob = bdate
     if user.save
       token = encode_token({user_id: user.id})
       json = {token: token, success: true,
@@ -27,10 +23,7 @@ class Api::V1::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     new_info = user_params
-    # byebug
     if user.authenticate(user_params[:password])
-      # new_info = {name: user_params[:name], email: user_params[:email], phone_number: user_params[:phone_number], password: user_params[:new_password], password_confirmation: user_params[:password_confirmation]}
-      # byebug
       if user.update(name: user_params[:name],
                   email: user_params[:email],
                   phone_number: user_params[:phone_number],
@@ -41,17 +34,12 @@ class Api::V1::UsersController < ApplicationController
         json = {message: "Confirmation is not matching. Please check.", success: false}
       end
     elsif current_user.user_type == 'admin'
-      # byebug
       user.update(user_type: user_params[:user_type])
       json = {message: "Type updated.", success: true}
     else
       json = {message: "Please check your password.", success: false}
     end
     render json: json
-  end
-
-  def destroy
-
   end
 
   private

@@ -36,7 +36,6 @@ m10 = Member.create!(name: "m10", email: "m10@mm.com", phone_number: 9879870987,
 
 g1.users << u1
 g1.users << u3
-# g2.users << admin
 g1.members << m1
 g1.members << m2
 g1.members << m3
@@ -48,7 +47,6 @@ g2.members << m8
 g2.members << m9
 g2.members << m10
 
-# g3.users << admin
 g3.users << u3
 g4.users << u1
 g3.members << m2
