@@ -7,6 +7,7 @@ class Api::V1::AuthController < ApplicationController
         user: {id: user.id,
                name: user.name,
                email: user.email,
+               phone_number: user.phone_number,
                user_type: user.user_type}}
     else
       json = {errors: "No matching email or password", success: false}

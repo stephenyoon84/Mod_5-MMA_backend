@@ -24,7 +24,24 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-
+    user = User.find(params[:id])
+    new_info = user_params
+    if user.authenticate(user_params[:password])
+      # new_info = {name: user_params[:name], email: user_params[:email], phone_number: user_params[:phone_number], password: user_params[:new_password], password_confirmation: user_params[:password_confirmation]}
+      # byebug
+      if user.update(name: user_params[:name],
+                  email: user_params[:email],
+                  phone_number: user_params[:phone_number],
+                  password: user_params[:new_password],
+                  password_confirmation: user_params[:password_confirmation])
+        json = {message: "Update success.", success: true}
+      else
+        json = {message: "Confirmation is not matching. Please check.", success: false}
+      end
+    else
+      json = {message: "Please check your password.", success: false}
+    end
+    render json: json
   end
 
   def destroy
@@ -34,6 +51,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :phone_number, :gender, :dob, :register_date, :active, :info, :user_type, :password, :password_confirmation)
+    params.require(:user).permit(:id, :name, :email, :phone_number, :gender, :dob, :register_date, :active, :info, :user_type, :password, :password_confirmation, :new_password)
   end
 end
