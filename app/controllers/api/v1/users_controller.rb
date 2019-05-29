@@ -26,6 +26,7 @@ class Api::V1::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     new_info = user_params
+    # byebug
     if user.authenticate(user_params[:password])
       # new_info = {name: user_params[:name], email: user_params[:email], phone_number: user_params[:phone_number], password: user_params[:new_password], password_confirmation: user_params[:password_confirmation]}
       # byebug
@@ -38,6 +39,10 @@ class Api::V1::UsersController < ApplicationController
       else
         json = {message: "Confirmation is not matching. Please check.", success: false}
       end
+    elsif current_user.user_type == 'admin'
+      # byebug
+      user.update(user_type: user_params[:user_type])
+      json = {message: "Type updated.", success: true}
     else
       json = {message: "Please check your password.", success: false}
     end
