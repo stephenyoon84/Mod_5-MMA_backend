@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20190514145121) do
     t.bigint "phone_number"
     t.string "gender"
     t.date "dob"
-    t.date "register_date", default: "2019-05-29"
+    t.date "register_date", default: "2019-05-30"
     t.boolean "active"
     t.text "info"
     t.string "user_type", default: "new_user"
