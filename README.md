@@ -3,3 +3,5 @@
 Ruby on Rails API
 
 PostgreSQL
+
+ActiveRecord - Polymorphic relation
